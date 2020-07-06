@@ -1,33 +1,56 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Tasks</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Name</th>
-      <th>Detail</th>
-      <th>State</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.user_id %></td>
-        <td><%= task.name %></td>
-        <td><%= task.detail %></td>
-        <td><%= task.state %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Task', new_task_path %>
+<div class="container mt-3 animate__animated animate__fadeIn ">
+  <%= link_to 'New Task', new_task_path, class:"btn btn-danger text-white" %>
+  <div class="row justify-content-center">
+    <div class="col-6 align-self-center " style="text-align:center; width: 40vw">
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active" id="nav-tasks-tab" data-toggle="tab" 
+            href="#nav-tasks" role="tab" aria-controls="nav-tasks" aria-selected="true">Tasks</a>
+          <a class="nav-item nav-link" id="nav-completed-tab" data-toggle="tab" 
+          href="#nav-completed" role="tab" aria-controls="nav-completed" aria-selected="false">Completed</a>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-tasks" role="tabpanel" aria-labelledby="nav-tasks-tab">
+            <% @tasks.each do |task| %>
+              <% if !task.state %>
+              <div class="list-group" >
+                <span class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1"><%= task.name %></h6>
+                    <small class="text-danger">Pendiente</small>
+                  </div>
+                  <div class="d-flex w-100 justify-content-left">
+                    <%= link_to 'edit', edit_task_path(task),  class:"material-icons text-warning"%>
+                    <%= link_to 'visibility', task , class:"material-icons text-success"%>
+                    <%= link_to 'delete', task, method: :delete, data: { confirm: 'Are you sure?' } , 
+                    class:"material-icons text-danger"%>
+                  </div>
+                </span>
+              </div>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="tab-pane fade" id="nav-completed" role="tabpanel" aria-labelledby="nav-completed-tab">
+           <% @tasks.each do |task| %>
+              <% if task.state %>
+              <div class="list-group" >
+                <span class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1"><%= task.name %></h6>
+                    <small class="text-success">Completada</small>
+                  </div>
+                  <div class="d-flex w-100 justify-content-left">
+                    <%= link_to 'edit', edit_task_path(task),  class:"material-icons text-warning"%>
+                    <%= link_to 'visibility', task , class:"material-icons text-success"%>
+                    <%= link_to 'delete', task, method: :delete, data: { confirm: 'Are you sure?' } , 
+                    class:"material-icons text-danger"%>
+                  </div>
+                </span>
+              </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

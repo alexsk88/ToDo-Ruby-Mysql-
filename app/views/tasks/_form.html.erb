@@ -11,27 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+  <div class="field" style="display:none">
+    <%= form.text_field :user_id,  :value => current_user.id%>
   </div>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name ,  :placeholder=>"Task" %>
   </div>
 
   <div class="field">
-    <%= form.label :detail %>
-    <%= form.text_area :detail %>
+    <%= form.text_area :detail, :placeholder=>"Detail Task"  %>
   </div>
 
   <div class="field">
-    <%= form.label :state %>
-    <%= form.check_box :state %>
+    Mark as completed <%= form.check_box :state %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Save", class:"btn btn-danger" %>
   </div>
+
 <% end %>
+   

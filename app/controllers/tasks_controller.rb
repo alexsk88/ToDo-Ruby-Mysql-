@@ -6,7 +6,8 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    # puts current_user.email
+    @tasks = Task.where(user_id: current_user.id)
   end
 
   # GET /tasks/1
@@ -27,6 +28,7 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
+    # @task = current_user.tasks.new(task_params)
 
     respond_to do |format|
       if @task.save
