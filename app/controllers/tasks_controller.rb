@@ -6,7 +6,11 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    # puts current_user.email
+    # Task.methods.each do |single|
+      
+    #   puts " ------> #{single}"
+    # end
+    
     @tasks = Task.where(user_id: current_user.id)
   end
 
