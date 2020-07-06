@@ -1,22 +1,33 @@
-<p>
-  <strong>User:</strong>
-  <%= @task.user_id %>
-</p>
+<div class="container mt-2 animate__animated animate__fadeInLeft animate__faster">
+<%= link_to 'Back', tasks_path , class:"text-white btn btn-danger mt-2"%>
+<%= link_to 'Editar',edit_task_path(@task), class:"text-white btn btn-warning mt-2"%>
+  <div class="row justify-content-center">
+    <div class="col-6 align-self-center " style="text-align:left; width: 40vw">
 
-<p>
-  <strong>Name:</strong>
-  <%= @task.name %>
-</p>
+        <h1><%= @task.name %></h1>
 
-<p>
-  <strong>Detail:</strong>
-  <%= @task.detail %>
-</p>
+        <p>
+        <strong>Created Byr</strong>
+        <%= @task.user.email %>
+      </p>
 
-<p>
-  <strong>State:</strong>
-  <%= @task.state %>
-</p>
+      <p>
+        <strong>Detail:</strong>
+        <%= @task.detail %>
+      </p>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+      <p>
+        <strong>State:</strong>
+        
+        <% if !@task.state %>
+          <span  class="text-danger">Pending</span>
+        <% else %>
+          <span  class="text-success">Completed</span>
+        <% end %>
+      
+      </p>
+
+
+    </div>
+  </div>
+</div>

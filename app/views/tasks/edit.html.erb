@@ -1,6 +1,16 @@
-<h1>Editing Task</h1>
 
-<%= render 'form', task: @task %>
+<div class="container mt-2 animate__animated animate__fadeInLeft animate__faster">
+    <%= link_to 'Back', tasks_path , class:"text-white btn btn-danger mt-2"%>
+    <%= link_to 'Show',  @task, class:"text-white btn btn-success mt-2"%>
+  <div class="row justify-content-center">
+    <div class="col-6 align-self-center " style="text-align:center; width: 40vw">
 
-<%= link_to 'Show', @task %> |
-<%= link_to 'Back', tasks_path %>
+
+        <h1>Editing Task</h1>
+
+        <%= render 'form', task: @task %>
+
+    </div>
+  </div>
+</div>
+
