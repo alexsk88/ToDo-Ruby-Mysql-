@@ -1,0 +1,25 @@
+<div class="container mt-2 animate__animated animate__fadeInLeft animate__faster">
+  <%= link_to 'Back', tasks_path , class:"text-white btn btn-danger mt-2"%>
+  <div class="row justify-content-center">
+    <div class="col-6 align-self-center " style=" width: 40vw">
+      <h1>Tasks Report</h1> <hr/><br>
+
+        
+      <h6>Select User</h6>
+      <select class="custom-select custom-select-lg mb-3">
+        <% @users.each do |user| %>
+          <option value="<%= user.id%>"><%= user.email %></option>
+        <% end %>
+      </select>
+
+        <h6>Select Task State</h6>
+        <select class="custom-select custom-select-lg mb-3">
+            <option value="false">Pending</option>
+            <option value="true">Completed</option>
+        </select>
+
+        <%= link_to "Generate ", {controller: "tasks", 
+          action: "report",id_user:1, state:'true'} , class:'btn btn-danger'%>
+    </div>
+  </div>
+</div>

@@ -69,6 +69,20 @@ class TasksController < ApplicationController
     end
   end
 
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
+  def generate_report
+    @users = User.all
+  end
+
+  def report
+    @p1 = params[:id_user]
+    @p2 = params[:state]
+    @tasks = Task.where("user_id = ? AND state = ?",params[:id_user],params[:state])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
@@ -77,6 +91,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:user_id, :name, :detail, :state)
+      params.require(:task).permit(:user_id, :name, :detail, :state, :date_start, :date_end )
     end
 end

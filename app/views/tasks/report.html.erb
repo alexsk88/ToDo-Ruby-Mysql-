@@ -1,0 +1,23 @@
+<div class="container mt-2 animate__animated animate__fadeInLeft animate__faster">
+  <%= link_to 'Back', tasks_path , class:"text-white btn btn-danger mt-2"%>
+  <div class="row justify-content-center">
+    <div class="col-6 align-self-center " style=" width: 40vw">
+      <h1>Report</h1>
+       <hr/><br>
+      <% if @tasks.size == 0 %>
+        NO hay tareas para tu reporte
+      <% else %>
+        <% @tasks.each do |task| %>
+          <div class="list-group" >
+            <span class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h6 class="mb-1"><%= task.name %></h6>
+                <small class="text-danger">Pendiente</small>
+              </div>
+            </span>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

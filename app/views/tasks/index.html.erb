@@ -2,6 +2,8 @@
   <%= link_to 'New Task', new_task_path, class:"btn btn-danger text-white" %>
   <div class="row justify-content-center">
     <div class="col-6 align-self-center " style="text-align:center; width: 40vw">
+
+    <%= current_user.email %>
       <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <a class="nav-item nav-link active" id="nav-tasks-tab" data-toggle="tab" 
@@ -12,7 +14,7 @@
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-tasks" role="tabpanel" aria-labelledby="nav-tasks-tab">
             <% @tasks.each do |task| %>
-              <% if !task.state %>
+              <% if !task.state %>1
               <div class="list-group" >
                 <span class="list-group-item list-group-item-action">
                   <div class="d-flex w-100 justify-content-between">
