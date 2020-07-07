@@ -4,22 +4,22 @@
     <div class="col-6 align-self-center " style=" width: 40vw">
       <h1>Tasks Report</h1> <hr/><br>
 
+
+      <%= form_tag({:controller => "tasks", :action => "report"},
+      :method => "get", :class => "nifty_form") %>
+
+
+      <%= select_tag :id_user, options_from_collection_for_select(@users, "id", "email") , 
+      class:"custom-select custom-select-lg mb-3"%>
+
+      <%= select_tag :state, options_for_select([['Pending', 0], ['Completed', 1]]) , 
+      class:"custom-select custom-select-lg mb-3"%>
+
+      
+
+      <input type="submit" value="Generate" class="btn btn-danger">
         
-      <h6>Select User</h6>
-      <select class="custom-select custom-select-lg mb-3">
-        <% @users.each do |user| %>
-          <option value="<%= user.id%>"><%= user.email %></option>
-        <% end %>
-      </select>
 
-        <h6>Select Task State</h6>
-        <select class="custom-select custom-select-lg mb-3">
-            <option value="false">Pending</option>
-            <option value="true">Completed</option>
-        </select>
-
-        <%= link_to "Generate ", {controller: "tasks", 
-          action: "report",id_user:1, state:'true'} , class:'btn btn-danger'%>
     </div>
   </div>
 </div>
