@@ -78,9 +78,10 @@ class TasksController < ApplicationController
   end
 
   def report
-    @p1 = params[:id_user]
-    @p2 = params[:state]
-    @tasks = Task.where("user_id = ? AND state = ?",params[:id_user],params[:state])
+    id_user = params[:id_user]
+    state = params[:state]
+    @tasks = Task.where("user_id = ? AND state = ?",id_user,state)
+    TaskMailer.new_report(id_user, state).deliver_later
   end
 
   private

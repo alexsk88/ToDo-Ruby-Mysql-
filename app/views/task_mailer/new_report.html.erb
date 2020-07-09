@@ -1,0 +1,22 @@
+<div class="jumbotron">
+    <h1 class="display-4">Reporte de tareas</h1>
+    <p class="lead">Este es un tu reporte de tareas "pendiente".</p>
+    <hr class="my-4">
+     <% @tasks.each do |task| %>
+        <div class="list-group" >
+        <span class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+            <h6 class="mb-1"><%= task.name %></h6>
+            <small class="<%= !task.state ? "text-danger" : "text-success"%>">
+             <%= !task.state ? "Pendiente" : "complete"%>
+            </small>
+            </div>
+        </span>
+        </div>
+    <% end %>
+    <br/>
+    <a class="btn btn-primary btn-lg" href="#" role="button">
+        Ver en Mi pagina
+    </a>
+    
+  </div>

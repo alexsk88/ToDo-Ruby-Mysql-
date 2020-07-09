@@ -14,3 +14,14 @@
  *= require_self
  */
 
+body{
+    margin:  0 !important;
+    padding:  0 !important;
+}
+.imgcom
+{
+    width: 40px !important;
+}
+.txt-galada{
+    font-family: 'Galada', cursive;
+}

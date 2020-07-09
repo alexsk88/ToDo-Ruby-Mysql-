@@ -13,13 +13,13 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'bootsnap', '>= 1.4.2', require: false
 
-
 group :development, :test do
   
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :development do
+  gem 'letter_opener'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
   gem 'spring'
