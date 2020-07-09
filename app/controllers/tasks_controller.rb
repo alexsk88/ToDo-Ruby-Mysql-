@@ -78,11 +78,21 @@ class TasksController < ApplicationController
   end
 
   def report
-    id_user = params[:id_user]
-    state = params[:state]
-    @tasks = Task.where("user_id = ? AND state = ?",id_user,state)
+    @id_user = params[:id_user]
+    @state = params[:state]
+    @tasks = Task.where("user_id = ? AND state = ?",@id_user,@state)
+  
+    # ACA HAY UN BUUUGASO
+
     
-    TaskMailer.new_report(id_user, state).deliver_later
+    TaskMailer.new_report(@id_user, @state).deliver_later
+    respond_to do |format|
+   
+        format.html 
+        format.pdf {render template: 'tasks/mipdf',pdf: 'Reporte'}
+        format.json
+      end
+    
   end
 
   private

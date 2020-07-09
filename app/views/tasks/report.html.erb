@@ -5,7 +5,9 @@
       <h1>Report</h1>
       <small>El reporte se ha enviado al correo</small> <br>
       <button class="btn btn-success">Excel</button>
-      <button class="btn btn-danger">PDF</button>
+      <%= link_to "PDF", {controller: "tasks", action: "report", 
+      id_user: @id_user,state: @state , :format => 'pdf'}, class:'btn btn-danger'%>
+    
        <hr/><br>
       <% if @tasks.size == 0 %>
         NO hay tareas para tu reporte
