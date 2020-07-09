@@ -1,43 +1,40 @@
 <div class="container mt-2 animate__animated animate__fadeInLeft animate__faster">
-<%= link_to 'Back', tasks_path , class:"text-white btn btn-danger mt-2"%>
-<%= link_to 'Editar',edit_task_path(@task), class:"text-white btn btn-warning mt-2"%>
+  <%= link_to 'Back', tasks_path , class:"text-white btn btn-danger mt-2"%>
+  <%= link_to 'Editar',edit_task_path(@task), class:"text-white btn btn-warning mt-2"%>
   <div class="row justify-content-center">
     <div class="col-6 align-self-center " style="text-align:left; width: 40vw">
-
-        <h1><%= @task.name %></h1>
-
-        <p>
+      <h1><%= @task.name %></h1>
+      <p>
         <strong>Created Byr</strong>
         <%= @task.user.email %>
       </p>
-
       <p>
         <strong>Detail:</strong>
         <%= @task.detail %>
       </p>
-      
       <p>
         <strong>Date Start:</strong>
         <%= @task.date_start %>
       </p>
-      
       <p>
         <strong>Date End:</strong>
         <%= @task.date_end %>
       </p>
-
       <p>
         <strong>State:</strong>
-        
         <% if !@task.state %>
           <span  class="text-danger">Pending</span>
         <% else %>
           <span  class="text-success">Completed</span>
         <% end %>
-      
       </p>
-
-
+      <% if @task.file.exists? %>
+        <p>
+          <strong>Archivo:</strong>
+          <%= @task.file.original_filename %>
+        </p>
+        <a href="<%=@task.file.url()%>" download="file_name">Descar Archivo</a>
+      <% end %>
     </div>
   </div>
 </div>

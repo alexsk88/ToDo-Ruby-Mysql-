@@ -81,6 +81,7 @@ class TasksController < ApplicationController
     id_user = params[:id_user]
     state = params[:state]
     @tasks = Task.where("user_id = ? AND state = ?",id_user,state)
+    
     TaskMailer.new_report(id_user, state).deliver_later
   end
 
@@ -92,6 +93,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:user_id, :name, :detail, :state, :date_start, :date_end )
+      params.require(:task).permit(:user_id, :name, :detail, :state, :date_start, :date_end, :file)
     end
 end

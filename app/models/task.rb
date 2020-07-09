@@ -4,6 +4,20 @@ class Task < ApplicationRecord
 #   validates :state , inclusion:{in:[true, false]}
 #   validates :detail, length: {minimum:20, maximum:200}
 
+# No olvidad crear :file en el controller para que lo reciba
+  has_attached_file :file
+  validates_attachment_content_type :file, content_type: ["image/jpeg", "image/gif", "image/png","application/pdf"]
+
+
+  # Geneara PDF
+  # instalas gemas wicked_pdf y binaries bla bla mirar dos 
+  # que converte de HTML A PDF
+  # rails g wicked_pdf  -> Inicializa el proyecto a pdf
+
+
+  
+
+
   before_save :ejemple
 
   private
