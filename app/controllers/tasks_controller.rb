@@ -85,12 +85,13 @@ class TasksController < ApplicationController
     # ACA HAY UN BUUUGASO
 
     
-    TaskMailer.new_report(@id_user, @state).deliver_later
+    # TaskMailer.new_report(@id_user, @state).deliver_later
     respond_to do |format|
    
         format.html 
         format.pdf {render template: 'tasks/mipdf',pdf: 'Reporte'}
         format.json
+        format.xlsx {render xlsx: 'Reporteex', template: 'tasks/miexcel'}
       end
     
   end
