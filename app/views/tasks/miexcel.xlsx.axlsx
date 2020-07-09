@@ -1,6 +1,6 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: "Products") do |sheet|
-@tasks.each do |task|
-    sheet.add_row [task.id, task.name, task.state, task.detail, task.file_file_name]
+  @tasks.each do |task|
+    sheet.add_row [task.id, task.name, task.state, task.detail, task.date_start,task.date_end,task.file_file_name]
   end
 end
